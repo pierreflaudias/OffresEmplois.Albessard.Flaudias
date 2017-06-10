@@ -9,17 +9,30 @@ namespace Model.Entities
 {
     public class Formation
     {
-        [Key]
+        /// <summary>
+        /// The id of the formation
+        /// </summary>
         public int Id { get; set; }
-
-        [Required]
+        
+        /// <summary>
+        /// The id of the employee in the formation
+        /// </summary>
         public int EmployeeId { get; set; }
 
-        [Required]
+        /// <summary>
+        /// The title of the formation
+        /// </summary>
         public string Title { get; set; }
 
-        [Required]
+        /// <summary>
+        /// The date of the formation
+        /// </summary>
         public DateTime Date { get; set; }
+
+        /// <summary>
+        /// The employee in the formation
+        /// </summary>
+        public Employee Employee { get; set; }
 
 
     }

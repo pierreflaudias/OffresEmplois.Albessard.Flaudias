@@ -12,25 +12,21 @@ namespace Model.Entities
         /// <summary>
         /// The id of the offer
         /// </summary>
-        [Key]
         public int Id { get; set; }
 
         /// <summary>
         /// The label of the offer
         /// </summary>
-        [Required]
         public string Title { get; set; }
 
         /// <summary>
         /// The date when the offer was posted
         /// </summary>
-        [Required]
         public DateTime Date { get; set; }
 
         /// <summary>
         /// The salary given by the offer
         /// </summary>
-        [Required]
         public float Salary { get; set; }
 
         /// <summary>
@@ -41,15 +37,22 @@ namespace Model.Entities
         /// <summary>
         /// The id of the status
         /// </summary>
-
         public int StatusId { get; set; }
 
+        /// <summary>
+        /// The status of the offer
+        /// </summary>
         public Status Status { get; set; }
 
         /// <summary>
         /// The responsible of the offer
         /// </summary>
         public string Responsible { get; set; }
+
+        /// <summary>
+        /// The postulations for this offer
+        /// </summary>
+        public ICollection<Postulation> Postulations { get; set; }
 
     }
 }

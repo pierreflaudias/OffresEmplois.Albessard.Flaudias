@@ -12,14 +12,17 @@ namespace Model.Entities
         /// <summary>
         /// The id of the status
         /// </summary>
-        [Key]
         public int Id { get; set; }
 
 
         /// <summary>
         /// the label of the status
         /// </summary>
-        [Required]
         public string Label { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ICollection<Offer> Offers { get; set; }
     }
 }

@@ -25,6 +25,7 @@ namespace Model.FluentEntities
             Property(emp => emp.FirstName).HasColumnName("EMP_FIRSTNAME").IsRequired();
 
             HasMany(emp => emp.Experiences).WithRequired(exp => exp.Employee).HasForeignKey(exp => exp.EmployeeId);
+            HasMany(emp => emp.Formations).WithRequired(form => form.Employee).HasForeignKey(form => form.EmployeeId);
         }
 
     }

@@ -64,15 +64,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Entities\Employee.cs" />
     <Compile Include="Entities\Experience.cs" />
     <Compile Include="Entities\Formation.cs" />
     <Compile Include="Entities\Offer.cs" />
     <Compile Include="Entities\Postulation.cs" />
     <Compile Include="Entities\Status.cs" />
+    <Compile Include="FluentEntities\ContextFluent.cs" />
     <Compile Include="FluentEntities\EmployeeFluent.cs" />
     <Compile Include="FluentEntities\ExperienceFluent.cs" />
+    <Compile Include="FluentEntities\FormationFluent.cs" />
+    <Compile Include="FluentEntities\OfferFluent.cs" />
+    <Compile Include="FluentEntities\PostulationFluent.cs" />
+    <Compile Include="FluentEntities\StatusFluent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

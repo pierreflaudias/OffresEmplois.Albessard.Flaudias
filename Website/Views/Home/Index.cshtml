@@ -1,0 +1,20 @@
+﻿@Model List<Offer>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+    <ul style="margin-top: 50px;">
+        
+    </ul>
+<div class="row">
+    @foreach (var offer in Model)
+    {
+        <div class="col-md-4">
+            <h2>@Html.ActionLink(linkText: (string)@offer.Title, actionName: "Detail", controllerName: "Home", routeValues: new { id = offer.Id }, htmlAttributes: null )</h2>
+            <p>
+                @offer.Description
+            </p>
+            <p>@offer.Date</p>
+        </div>
+    }
+</div>
