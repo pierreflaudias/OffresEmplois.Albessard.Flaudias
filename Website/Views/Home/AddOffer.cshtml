@@ -1,0 +1,27 @@
+﻿@model Model.Entities.Offer
+@{
+    ViewBag.Title = "AddOffer";
+}
+<h2 style="margin-top:150px">AddOffer</h2>
+<p>
+    @using (Html.BeginForm("AddOffer", "Home"))
+    {
+        <fieldset>
+            <label>Titre de l'offre</label>
+            @Html.TextBoxFor(model => model.Title, new { @class = "form_input_field"})<br/>
+            <label>Salaire proposé</label>
+            @Html.TextBoxFor(model => model.Salary, new { @class = "form_input_field" })<br />
+            <label>Description de l'offre</label>
+            @Html.TextBoxFor(model => model.Description, new { @class = "form_input_field" })<br />
+            <label>Statut de l'offre</label>
+            @Html.DropDownListFor(model => model.Status, new SelectList())
+            @Html.TextBoxFor(model => model.Description, new { @class = "form_input_field" })<br />
+            <label>Responsable de l'offre</label>
+            @Html.TextBoxFor(model => model.Responsible, new { @class = "form_input_field" })<br />
+            <br/>
+            <input type="submit" id="addOfferSubmit" value="Créer la nouvelle offre" />
+        </fieldset>
+    }
+</p>
+
+

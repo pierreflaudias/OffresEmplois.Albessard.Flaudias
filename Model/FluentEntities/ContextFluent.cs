@@ -21,13 +21,14 @@ namespace Model.FluentEntities
 
         public ContextFluent() :base("name=OffresEmploisConnection")
         {
-            Database.SetInitializer<ContextFluent>(null);
+            Database.SetInitializer<ContextFluent>(new CreateDatabaseIfNotExists<ContextFluent>());
+            Database.SetInitializer<ContextFluent>(new DropCreateDatabaseIfModelChanges<ContextFluent>());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.HasDefaultSchema("offers");
+            modelBuilder.HasDefaultSchema("dbo");
             modelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
         }
     }

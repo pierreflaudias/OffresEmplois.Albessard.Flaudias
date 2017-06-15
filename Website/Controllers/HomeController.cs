@@ -1,5 +1,6 @@
 ﻿using BusinessLayer;
 using Model.Entities;
+using Model.FluentEntities;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -9,37 +10,28 @@ namespace Website.Controllers
     {
         public ActionResult Index()
         {
-            List<Offer> offers = new List<Offer>
-            {
-                new Offer
-                {
-                    Date = System.DateTime.Now,
-                    Description = "tretrete",
-                    Title = "truc",
-                    Id = 3
-                },
-                new Offer
-                {
-                    Date = System.DateTime.Now,
-                    Description = "tbhuoze",
-                    Title = "bidue",
-                    Id = 5
-                }
-            };
-            //List<Offer> offers = Manager.Instance.GetAllOffers();
+            List<Offer> offers = Manager.Instance.GetAllOffers();
+
             return View("Index", offers);
         }
 
         public ActionResult Detail(int id)
         {
-            Offer o = new Offer
-            {
-                Date = System.DateTime.Now,
-                Description = "tretrete",
-                Title = "truc",
-                Id = id
-            };
+            //Offer o = new Offer
+            //{
+            //    Date = System.DateTime.Now,
+            //    Description = "tretrete",
+            //    Title = "truc",
+            //    Id = id
+            //};
+            Offer o = Manager.Instance.GetOffer(id);
             return View("Detail",o);
+        }
+
+        public ActionResult AddOffer()
+        {
+            Offer o = new Offer();
+            return View("AddOffer", o);
         }
     }
 }
