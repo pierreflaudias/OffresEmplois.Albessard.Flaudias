@@ -14,10 +14,10 @@
             <p>
                 @offer.Description
             </p>
-            <p>@offer.Date</p>
+            <p>@offer.Date.ToString("dd/MM/yy")</p>
         </div>
-        <p>
-            <h2>@Html.ActionLink(linkText: "Ajouter une nouvelle offre", actionName: "AddOffer", controllerName: "Home")</h2>
-        </p>
     }
+    <p>
+        <h2>@Html.ActionLink(linkText: "Ajouter une nouvelle offre", actionName: "AddOffer", controllerName: "Home")</h2>
+    </p>
 </div>

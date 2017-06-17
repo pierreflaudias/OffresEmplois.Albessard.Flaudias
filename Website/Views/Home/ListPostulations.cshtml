@@ -1,0 +1,15 @@
+﻿@Model List<Postulation>
+@{
+    ViewBag.Title = "ListPostulations";
+}
+
+<h2 style="margin-top: 50px;">Liste des postulations</h2>
+
+@foreach (var p in @Model)
+{
+    <div class="col-md-4">
+        <h3>@Html.ActionLink(linkText: (string)@p.Offer.Title, actionName: "Detail", controllerName: "Home", routeValues: new { id = @p.Offer.Id }, htmlAttributes: null)</h3>
+        <p>@p.Offer.Description</p>
+        <p>@p.Date.ToString("dd/MM/yy")</p>
+    </div>
+}

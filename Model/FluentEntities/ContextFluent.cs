@@ -28,7 +28,7 @@ namespace Model.FluentEntities
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.HasDefaultSchema("dbo");
+            modelBuilder.HasDefaultSchema("offers");
             modelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
         }
     }

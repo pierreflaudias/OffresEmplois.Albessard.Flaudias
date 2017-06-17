@@ -1,25 +1,24 @@
-﻿@model Model.Entities.Offer
+﻿@model Website.Models.AddOfferViewModel
 @{
     ViewBag.Title = "AddOffer";
 }
 <h2 style="margin-top:150px">AddOffer</h2>
 <p>
-    @using (Html.BeginForm("AddOffer", "Home"))
+    @using (Html.BeginForm("AddOffer", "Home", FormMethod.Post))
     {
         <fieldset>
             <label>Titre de l'offre</label>
-            @Html.TextBoxFor(model => model.Title, new { @class = "form_input_field"})<br/>
+            @Html.TextBoxFor(model => model.Offer.Title, new { @class = "form-control" })<br/>
             <label>Salaire proposé</label>
-            @Html.TextBoxFor(model => model.Salary, new { @class = "form_input_field" })<br />
+            @Html.TextBoxFor(model => model.Offer.Salary, new { @class = "form-control" })<br />
             <label>Description de l'offre</label>
-            @Html.TextBoxFor(model => model.Description, new { @class = "form_input_field" })<br />
+            @Html.TextBoxFor(model => model.Offer.Description, new { @class = "form-control" })<br />
             <label>Statut de l'offre</label>
-            @Html.DropDownListFor(model => model.Status, new SelectList())
-            @Html.TextBoxFor(model => model.Description, new { @class = "form_input_field" })<br />
+            @Html.DropDownListFor(model => model.Offer.StatusId, Model.ListStatuses, new { @class = "form-control" })<br/>
             <label>Responsable de l'offre</label>
-            @Html.TextBoxFor(model => model.Responsible, new { @class = "form_input_field" })<br />
+            @Html.TextBoxFor(model => model.Offer.Responsible, new { @class = "form-control" })<br />
             <br/>
-            <input type="submit" id="addOfferSubmit" value="Créer la nouvelle offre" />
+            <input type="submit" id="addOfferSubmit" value="Créer la nouvelle offre" class="btn btn-success" />
         </fieldset>
     }
 </p>

@@ -230,7 +230,10 @@ namespace BusinessLayer
         public Offer GetOffer(int offerId)
         {
             OfferQuery fq = new OfferQuery(_context);
-            return fq.GetById(offerId);
+            Offer o = fq.GetById(offerId);
+            o.Status = this.GetStatus(o.StatusId);
+            o.Postulations = this.GetPostulationsFromOffer(o);
+            return o;
         }
 
         /// <summary>
@@ -355,7 +358,12 @@ namespace BusinessLayer
         public List<Postulation> GetPostulationsFromEmployee(Employee e)
         {
             PostulationQuery pq = new PostulationQuery(_context);
-            return pq.GetByEmployee(e).ToList();
+            List<Postulation> listPosts = pq.GetByEmployee(e).ToList();
+            foreach(Postulation post in listPosts)
+            {
+                post.Offer = Manager.Instance.GetOffer(post.OfferId);
+            }
+            return listPosts;
         }
 
         /// <summary>

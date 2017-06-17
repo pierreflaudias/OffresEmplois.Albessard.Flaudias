@@ -3,8 +3,33 @@
     ViewBag.Title = "Detail";
 }
 
-<h2>@Model.Title</h2>
+<h2 style="margin-top: 50px;">@Model.Title</h2>
 
-<p>@Model.Id</p>
+<div class="row">
+    <div class="col-sm-2"><h4>Date :</h4></div>
+    <div class="col-sm-10">@Model.Date.ToString("dd/MM/yy")</div>
 
+</div>
+<div class="row">
+    <div class="col-sm-2"><h4>Description :</h4></div>
+    <div class="col-sm-10">@Model.Description</div>
+</div>
+<div class="row">
+    <div class="col-sm-2"><h4>Salaire :</h4></div>
+    <div class="col-sm-10">@Model.Salary</div>
+</div>
+<div class="row">
+    <div class="col-sm-2"><h4>Responsable :</h4></div>
+    <div class="col-sm-10">@Model.Responsible</div>
+</div>
+<div class="row">
+    <div class="col-sm-2"><h4>Statut :</h4></div>
+    <div class="col-sm-10">@Model.Status.Label</div>
+</div>
+<p>Postulations:</p><br />
+@foreach (var v in @Model.Postulations)
+{
+    <p>@v.Employee.Name @v.Employee.FirstName</p>
+}
 
+<p>@Html.ActionLink(linkText: "Postuler", actionName: "AddPostulation", controllerName: "Home", routeValues: new { id = @Model.Id }, htmlAttributes: null)</p>

@@ -32,6 +32,7 @@ namespace Model.Entities
         /// <summary>
         /// The date of the postulation
         /// </summary>
+        
         public DateTime Date { get; set; }
 
         /// <summary>
