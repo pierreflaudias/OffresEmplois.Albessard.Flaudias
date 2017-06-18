@@ -219,7 +219,13 @@ namespace BusinessLayer
         public List<Offer> GetAllOffers()
         {
             OfferQuery oq = new OfferQuery(_context);
-            return oq.GetAll().ToList();
+            List<Offer> listOffers = oq.GetAll().ToList();
+            foreach(Offer o in listOffers)
+            {
+                o.Status = GetStatus(o.StatusId);
+                o.Postulations = GetPostulationsFromOffer(o);
+            }
+            return listOffers;
         }
 
         /// <summary>
@@ -294,10 +300,10 @@ namespace BusinessLayer
         }
 
         /// <summary>
-        /// Ajouter une Status en base
+        /// Ajouter un Status en base
         /// </summary>
         /// <param name="e">Status à ajouter</param>
-        /// <returns>identifiant du nouvel Status</returns>
+        /// <returns></returns>
         public int AddStatus(Status s)
         {
             // TODO : ajouter des contrôles sur le produit (exemple : vérification de champ, etc.)
@@ -347,7 +353,12 @@ namespace BusinessLayer
         public List<Postulation> GetPostulationsFromOffer(Offer o)
         {
             PostulationQuery pq = new PostulationQuery(_context);
-            return pq.GetByOffer(o).ToList();
+            List<Postulation> listPostulations = pq.GetByOffer(o).ToList();
+            foreach(Postulation post in listPostulations)
+            {
+                post.Employee = GetEmployee(post.EmployeeId);
+            }
+            return listPostulations;
         }
 
         /// <summary>

@@ -18,64 +18,11 @@ namespace OffersManagement.ViewModels
         public ListOffersVM()
         {
             _offers = new ObservableCollection<DetailOfferVM>();
-            foreach (Offer o in Manager.Instance.GetAllOffers())
+            List<Offer> listOffers = Manager.Instance.GetAllOffers();
+            foreach (Offer o in listOffers)
             {
                 _offers.Add(new DetailOfferVM(o));
             }
-           // Offer a = new Offer()
-           // {
-           //     Title = "offre a",
-           //     Date = DateTime.Today,
-           //     Description = "description fsgdhfsefk",
-           //     Responsible = "mr toto",
-           //     Salary = 15000,
-           //     Status = new Status { Id = 1, Label = "statustest" },
-           //     Postulations = new List<Postulation>()
-           // };
-           //a.Postulations.Add(new Postulation
-           // {
-           //     Date = DateTime.Today,
-           //     Employee = new Employee
-           //     {
-           //         FirstName = "totot",
-           //         Name = "tructruc"
-           //     },
-           //     Offer = a
-           // });
-           // Offer b = new Offer()
-           // {
-           //     Title = "offre b",
-           //     Date = DateTime.Today,
-           //     Description = "description hfjzgzehuezhzuohzk",
-           //     Responsible = "mr tata",
-           //     Salary = 30000,
-           //     Status = new Status { Id = 2, Label = "ier" },
-           //     Postulations = new List<Postulation>()
-           // };
-           // b.Postulations.Add(new Postulation
-           // {
-           //     Date = DateTime.Today,
-           //     Employee = new Employee
-           //     {
-           //         FirstName = "qsdf",
-           //         Name = "aaaaaaazerty"
-           //     },
-           //     Offer = b
-           // });
-           // b.Postulations.Add(new Postulation
-           // {
-           //     Date = DateTime.Today,
-           //     Employee = new Employee
-           //     {
-           //         FirstName = "ygherieorg",
-           //         Name = "hgeruizoghuieroghiuoer"
-           //     },
-           //     Offer = b
-           // });
-            //_offers = new ObservableCollection<DetailOfferVM>();
-            //Offers.Add(new DetailOfferVM(a));
-            //Offers.Add(new DetailOfferVM(b));
-
 
             if (_offers != null && _offers.Count > 0)
             {
@@ -99,6 +46,18 @@ namespace OffersManagement.ViewModels
             set
             {
                 _selectedOffer = value;
+                Offer o = new Offer
+                {
+                    Date = _selectedOffer.Date,
+                    Description = _selectedOffer.Description,
+                    Postulations = _selectedOffer.Postulations,
+                    Responsible = _selectedOffer.Responsible,
+                    Salary = _selectedOffer.Salary,
+                    Title = _selectedOffer.Title,
+                    StatusId = _selectedOffer.StatusId,
+                    Id = _selectedOffer.Id
+                };
+                Manager.Instance.UpdateOffer(o);
                 OnPropertyChanged("SelectedOffer");
             }
         }
