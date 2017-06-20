@@ -3,6 +3,7 @@ using Model.Entities;
 using Model.FluentEntities;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using Website.Models;
 
@@ -85,6 +86,21 @@ namespace Website.Controllers
         {
             List<Postulation> listPosts = Manager.Instance.GetPostulationsFromEmployee(Manager.Instance.GetAllEmployees().FirstOrDefault());
             return View("ListPostulations", listPosts);
+        }
+
+        
+        public ActionResult SearchOffers()
+        {
+            string formValue;
+            if (!string.IsNullOrEmpty(Request.QueryString.ToString()))
+            {
+                formValue = Request.QueryString["txtToSearch"].ToString();
+                Regex regx = new Regex(".*" + formValue + ".*");
+                List<Offer> listOffersMatched = Manager.Instance.GetAllOffers().Where(x => regx.IsMatch(x.Title)).ToList();
+                return View("Index", listOffersMatched);
+            }
+
+            return View("Index", Manager.Instance.GetAllOffers().ToList());
         }
     }
 }
