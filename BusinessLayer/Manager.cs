@@ -229,6 +229,22 @@ namespace BusinessLayer
         }
 
         /// <summary>
+        /// Rechercher une liste d'offres
+        /// </summary>
+        /// <returns></returns>
+        public List<Offer> GetSearchedOffers(string searchOffer)
+        {
+            OfferQuery oq = new OfferQuery(_context);
+            List<Offer> listOffers = oq.GetAll().Where(x => x.Title.ToUpper().Contains(searchOffer.ToUpper())).ToList();
+            foreach (Offer o in listOffers)
+            {
+                o.Status = GetStatus(o.StatusId);
+                o.Postulations = GetPostulationsFromOffer(o);
+            }
+            return listOffers;
+        }
+
+        /// <summary>
         /// Récupérer un Offer en base
         /// </summary>
         /// <param name="offerId">Id de l'Offer</param>

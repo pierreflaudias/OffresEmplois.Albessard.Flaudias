@@ -92,11 +92,10 @@ namespace Website.Controllers
         public ActionResult SearchOffers()
         {
             string formValue;
-            if (!string.IsNullOrEmpty(Request.QueryString.ToString()))
+            if (!string.IsNullOrEmpty(Request.QueryString["txtToSearch"].ToString()))
             {
                 formValue = Request.QueryString["txtToSearch"].ToString();
-                Regex regx = new Regex(".*" + formValue + ".*");
-                List<Offer> listOffersMatched = Manager.Instance.GetAllOffers().Where(x => regx.IsMatch(x.Title)).ToList();
+                List<Offer> listOffersMatched = Manager.Instance.GetSearchedOffers(formValue);
                 return View("Index", listOffersMatched);
             }
 

@@ -10,8 +10,10 @@
 
     <DockPanel>
         <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
-            <ComboBox></ComboBox>
+            <ComboBox ItemsSource="{Binding ListStatuses}" DisplayMemberPath="Label" SelectedItem="{Binding SelectedStatus, Mode=TwoWay}" />
             <ListView ItemsSource="{Binding Offers}" DisplayMemberPath="Title" SelectedItem="{Binding SelectedOffer, Mode=TwoWay}"></ListView>
+            <Button Content="Ajouter" Command="{Binding ActionAddOffer}"/>
+            <Button Content="Supprimer" Command="{Binding ActionDeleteOffer}"/>
         </StackPanel>
         <my:DetailOffer DataContext="{Binding SelectedOffer}"></my:DetailOffer>
     </DockPanel>
